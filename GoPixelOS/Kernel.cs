@@ -1,6 +1,7 @@
 ﻿using System;
 using Sys = Cosmos.System;
 using Cosmos.HAL;
+using Apps =  GoPixelOS.Applications;
 
 namespace GoPixelOS
 {
@@ -12,7 +13,7 @@ namespace GoPixelOS
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
             Console.WriteLine("\n\n                                Loading....                                   ");
-            WaitSeconds(4);
+            WaitSeconds(2);
             Console.WriteLine("\n\n                                Booting....                                   ");
             WaitSeconds(2);
             Console.Clear();
@@ -25,12 +26,12 @@ namespace GoPixelOS
         protected override void Run()
         {
             Console.Write("$ ");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().ToLower();
 
-
-
-            switch (input) {
+            switch (input)
+            {
                 case "cls":
+                    Console.Clear();
                     Console.BackgroundColor = ConsoleColor.Blue;
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("GoPixelOS 1.0.1                                                                 ");
@@ -58,6 +59,9 @@ namespace GoPixelOS
                     Console.WriteLine("Author: IsaacPar");
                     Console.WriteLine();
                     break;
+                case "apps":
+                    Apps.init();
+                    break;
                 default:
                     Console.WriteLine("command not found, use 'help' to see a list of avaliable commands");
                     break;
@@ -80,46 +84,7 @@ namespace GoPixelOS
                 // Loop round
             }
         }
-    }
-    public class Commands
-    {
-        public void cls()
-        {
-            Console.Clear();
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("GoPixelOS 1.0.1                                                                 ");
-            Console.BackgroundColor = ConsoleColor.Black;
+        
         }
-        public void help()
-        {
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("help - show this command list");
-            Console.WriteLine("cls - clear the 'terminal' ");
-            Console.WriteLine("shutdown - shutdown the pc or virtual machine");
-            Console.WriteLine("reboot - reboot the pc or virtual machine");
-            Console.WriteLine("systeminfo - show things about the system");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine();
-        }
-        public void shutdown()
-        {
-            Cosmos.System.Power.Shutdown();
-        }
-        public void reboot()
-        {
-            Cosmos.System.Power.Reboot();
-        }
-        public void systeminfo()
-        {
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Operating System: GoPixelOS 1.0.1");
-            Console.WriteLine("Kernel Compiler: Cosmos");
-            Console.WriteLine("Author: IsaacPar");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine();
-        }
-    }
+    
 }
