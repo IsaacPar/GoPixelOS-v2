@@ -8,7 +8,10 @@ namespace GoPixelOS
     {
         public static void calc()
         {
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Calculator                                                                      ");
+            Console.BackgroundColor = ConsoleColor.Black;
         }
         public static void init()
         {
@@ -17,7 +20,7 @@ namespace GoPixelOS
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Applications                                                                    ");
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine("     1) Exit");
+            Console.WriteLine("     1: Exit");
             Console.Write("\n\n Option: ");
             var app = Console.ReadLine();
 
