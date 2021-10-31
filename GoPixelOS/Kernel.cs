@@ -1,7 +1,9 @@
 ﻿using System;
 using Sys = Cosmos.System;
 using Cosmos.HAL;
-using Apps =  GoPixelOS.Applications;
+using Commands = GoPixelOS.Command;
+using Cosmos.System.ExtendedASCII;
+using System.Text;
 
 namespace GoPixelOS
 {
@@ -9,18 +11,11 @@ namespace GoPixelOS
     {
         protected override void BeforeRun()
         {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Clear();
-            Console.WriteLine("\n\n                                Loading....                                   ");
-            Helpers.WaitSeconds(2);
-            Console.WriteLine("\n\n                                Booting....                                   ");
-            Helpers.WaitSeconds(2);
-            Console.Clear();
-            Helpers.WaitSeconds(1);
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("GoPixelOS 1.0.1                                                                 ");
+            
+            Helpers.Boot();
+            Console.BackgroundColor = ConsoleColor.Blue;                                                              
+            Console.ForegroundColor = ConsoleColor.White;                                                          
+            Console.WriteLine("GoPixelOS 1.0.2                                                                ");
             Console.BackgroundColor = ConsoleColor.Black;
         }
         protected override void Run()
@@ -28,6 +23,8 @@ namespace GoPixelOS
             Console.Write("$ ");
             string input = Console.ReadLine().ToLower();
 
+            
+            Commands.ParseSimple(input);
             
             }
         }
@@ -49,7 +46,26 @@ namespace GoPixelOS
                 {
                     // Loop round
                 }
+
             }
+            public static bool Boot()
+            {
+            Encoding.RegisterProvider(CosmosEncodingProvider.Instance);
+
+            Console.InputEncoding = Encoding.GetEncoding(437);
+            Console.OutputEncoding = Encoding.GetEncoding(437);
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+            Console.Write("\n\n                                Loading....                                   ");
+            Console.WriteLine("                       █");
+            Helpers.WaitSeconds(1);
+            Console.Write("                           █████████");
+            Helpers.WaitSeconds(1);
+            Console.Write("                           ████████████████");
+            Console.Clear();
+            return true;
+            } 
         }
         
     

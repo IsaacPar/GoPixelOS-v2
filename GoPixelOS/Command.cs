@@ -16,7 +16,7 @@ namespace GoPixelOS
                     Console.Clear();
                     Console.BackgroundColor = ConsoleColor.Blue;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("GoPixelOS 1.0.1                                                                 ");
+                    Console.WriteLine("GoPixelOS 1.0.2                                                                 ");
                     Console.BackgroundColor = ConsoleColor.Black;
                     break;
                 case "help":
